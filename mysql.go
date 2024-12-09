@@ -1,5 +1,7 @@
 package pass_common
 
+import "github.com/asim/go-micro/v3/config"
+
 type MysqlConfig struct {
 	Host     string `json:"host"`
 	Port     string `json:"port"`
@@ -8,9 +10,8 @@ type MysqlConfig struct {
 	Database string `json:"database"`
 }
 
-
-func GetMysqlConfig(config.Config,opt ...string) *MysqlConfig {
+func GetMysqlConfig(config config.Config, opt ...string) *MysqlConfig {
 	mysqlConfig := &MysqlConfig{}
-	config.Get(opt).Scan(mysqlConfig)
-	rerturn mysqlConfig
+	config.Get(opt...).Scan(mysqlConfig)
+	return mysqlConfig
 }
