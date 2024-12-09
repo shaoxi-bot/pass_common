@@ -1,0 +1,16 @@
+package pass_common
+
+type MysqlConfig struct {
+	Host     string `json:"host"`
+	Port     string `json:"port"`
+	Username string `json:"user"`
+	Password string `json:"passwd"`
+	Database string `json:"database"`
+}
+
+
+func GetMysqlConfig(config.Config,opt ...string) *MysqlConfig {
+	mysqlConfig := &MysqlConfig{}
+	config.Get(opt).Scan(mysqlConfig)
+	rerturn mysqlConfig
+}
